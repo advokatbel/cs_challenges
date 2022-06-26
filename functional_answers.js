@@ -315,3 +315,15 @@ groupOfFuncs.inverse = n => n * -1;
 console.log(highestFunc(groupOfFuncs, 5)); // should log: 'addTen'
 console.log(highestFunc(groupOfFuncs, 11)); // should log: 'double'
 console.log(highestFunc(groupOfFuncs, -20)); // should log: 'inverse'
+
+// Closure
+// Challenge 1
+// Create a function createFunction that creates and returns a function. When that created function is called, it should print "hello".
+
+// Answer
+
+createFunction = () => () => console.log('hello');
+const function1 = createFunction();
+// now we'll call the function we just created
+function1(); //should console.log('hello');
+
