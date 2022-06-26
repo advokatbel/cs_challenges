@@ -339,3 +339,26 @@ const printHello = createFunctionPrinter('hello')
 printSample(); //should console.log('sample');
 printHello(); //should console.log('hello');
 
+// Challenge 3
+// Examine the code for the outer function. Notice that we are returning a function and that function is using variables that are outside of its scope.
+// Uncomment those lines of code. Try to deduce the output before executing.
+
+const outer = () => {
+    let counter = 0; // this variable is outside incrementCounter's scope
+    const incrementCounter = () => {
+      counter++;
+      console.log('counter', counter);
+    }
+    return incrementCounter;
+  };
+  
+  const willCounter = outer();
+  const jasCounter = outer();
+  
+  willCounter(); // 1
+  willCounter(); // 2
+  willCounter(); // 3
+  
+  jasCounter(); // 1
+  willCounter(); // 4
+  
