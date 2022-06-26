@@ -288,4 +288,30 @@ const repeat = str => str + str;
 const capAddlowRepeat = [capitalize, addLowerCase, repeat];
 console.log(pipe(capAddlowRepeat, 'cat')); // should log: 'CATcatCATcat'
 
+// Challenge 15
+// Create a function highestFunc that accepts an object (which will contain functions) and a subject (which is any value). highestFunc should return the key of the object whose associated value (which will be a function) returns the largest number, when the subject is given as input.
 
+// Answer Variant A
+
+const highestFunc = (objOfFuncs, subject) => {
+    const arr = Object.entries(objOfFuncs);
+    let resFunc;
+    const res = arr.reduce((acc, cur) => {
+        resFunc = cur[1](subject);
+        if (resFunc > acc[1]) 
+        { acc[0] = cur[0];
+          acc[1] = resFunc;
+        }
+        return acc;
+    }, ['',0]);
+        return res[0];
+};
+
+const groupOfFuncs = {};
+groupOfFuncs.double = n => n * 2;
+groupOfFuncs.addTen = n => n + 10;
+groupOfFuncs.inverse = n => n * -1;
+
+console.log(highestFunc(groupOfFuncs, 5)); // should log: 'addTen'
+console.log(highestFunc(groupOfFuncs, 11)); // should log: 'double'
+console.log(highestFunc(groupOfFuncs, -20)); // should log: 'inverse'
