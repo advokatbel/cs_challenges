@@ -327,3 +327,15 @@ const function1 = createFunction();
 // now we'll call the function we just created
 function1(); //should console.log('hello');
 
+// Challenge 2
+// Create a function createFunctionPrinter that accepts one input and returns a function. When that created function is called, it should print out the input that was used when the function was created.
+
+// Solution
+
+const createFunctionPrinter = (input) => () => console.log(input);
+const printSample = createFunctionPrinter('sample');
+const printHello = createFunctionPrinter('hello')
+// now we'll call the functions we just created
+printSample(); //should console.log('sample');
+printHello(); //should console.log('hello');
+
