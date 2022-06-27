@@ -381,3 +381,28 @@ const addByFour = addByX(4);
 console.log(addByFour(4)); //should return 8
 console.log(addByFour(10)); //should return 14
 
+// Challenge 5
+// Write a function once that accepts a callback as input and returns a function. When the returned function is called the first time, it should call the callback and return that output. If it is called any additional times, instead of calling the callback again it will simply return the output value from the first time it was called.
+
+// The Solution
+
+const once = (func) => {
+    let counter = 0;
+    let res;
+    const inner= (n) => {
+        if (!counter) { 
+            res = func(n);
+            counter++;
+            return res; 
+        } else return res; 
+    } 
+    return inner;
+};
+
+const addByTwo = n => n + 2;
+const onceFunc = once(addByTwo);
+
+// UNCOMMENT THESE TO TEST YOUR WORK!
+console.log(onceFunc(4));  //should log 6
+console.log(onceFunc(10));  //should log 6
+console.log(onceFunc(9001));  //should log 6
