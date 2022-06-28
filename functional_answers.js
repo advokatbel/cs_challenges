@@ -387,17 +387,19 @@ console.log(addByFour(10)); //should return 14
 // The Solution
 
 const once = (func) => {
-    let counter = 0;
-    let res;
+    let hasBeenRun = false;
+    let value;
     const inner= (n) => {
-        if (!counter) { 
-            res = func(n);
-            counter++;
-            return res; 
-        } else return res; 
+        if(hasBeenRun === false) { 
+          hasBeenRun = true
+            value = func(n);
+            return value; 
+        }else{ 
+            return value;
     } 
-    return inner;
-};
+}
+return inner;
+}
 
 const addByTwo = n => n + 2;
 const onceFunc = once(addByTwo);
@@ -406,3 +408,4 @@ const onceFunc = once(addByTwo);
 console.log(onceFunc(4));  //should log 6
 console.log(onceFunc(10));  //should log 6
 console.log(onceFunc(9001));  //should log 6
+
