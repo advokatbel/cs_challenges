@@ -409,3 +409,23 @@ console.log(onceFunc(4));  //should log 6
 console.log(onceFunc(10));  //should log 6
 console.log(onceFunc(9001));  //should log 6
 
+// Challenge 6
+// Write a function after that takes the number of times the callback needs to be called before being executed as the first parameter and the callback as the second parameter.
+
+// The Solution
+
+const after = (count, func) => {
+    let currentCount = 0;
+    const inner= () => {
+        currentCount++;
+        if(currentCount === 3) func();
+        } 
+        return inner;
+}
+
+const called = () => console.log('hello');
+const afterCalled = after(3, called);
+
+afterCalled(); // -> nothing is printed
+afterCalled(); // -> nothing is printed
+afterCalled(); // -> 'hello' is printed
