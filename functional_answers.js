@@ -654,3 +654,24 @@ console.log(i_like_to_live_dangerously()); // should log: 'you are done!'
 // console.log(i_ALSO_like_to_live_dangerously()); // should log: 'bust'
 // console.log(i_ALSO_like_to_live_dangerously()); // should log: 'you are done!
 // console.log(i_ALSO_like_to_live_dangerously()); // should log: 'you are done!
+
+// Challenge 1
+// Create a function functionValidator that accepts an array of functions and two different values (let's call them input and output). This function should return a new array containing *only* the functions from the original array that, when invoked with input, return the value output. Use reduce!)
+
+// The Solution 
+
+const functionValidator = (funcArr, input, output) => {
+  const res = funcArr.reduce((acc, cur) => {
+  if (cur(input) === output) acc.push(cur);
+  return acc;
+}, []) 
+return res;
+}
+
+const addFive = num => num + 5;
+const multiplyByTwo = num => num * 2;
+const subtractOne = num => num - 1;
+const fnArr = [addFive, multiplyByTwo, subtractOne];
+
+console.log(functionValidator(fnArr, 5, 10)) // should log [num => num + 5, num => num * 2]
+
