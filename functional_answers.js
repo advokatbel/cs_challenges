@@ -675,3 +675,22 @@ const fnArr = [addFive, multiplyByTwo, subtractOne];
 
 console.log(functionValidator(fnArr, 5, 10)) // should log [num => num + 5, num => num * 2]
 
+// Challenge 2
+// Create a function allClear that accepts an array of evaluator functions (each returning a boolean value), and a single value. Using reduce, return a single boolean value indicating whether the value "passes" every single one of the evaluator functions (i.e. returns true).
+
+// The Solution
+
+const allClear = (funcArr, value) => {
+  return funcArr.reduce((acc, cur) => {
+      if (!cur(value)) acc = false;
+      return acc;
+  }, true)
+}
+
+const isOdd = num => num % 2 === 1;
+const isPositive = num => num > 0;
+const multipleOfFive = num => num % 5 === 0;
+const numFnArr = [isOdd, isPositive, multipleOfFive];
+console.log(allClear(numFnArr, 25)) // should log true 
+console.log(allClear(numFnArr, -25)) // should log false
+
