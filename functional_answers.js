@@ -694,3 +694,17 @@ const numFnArr = [isOdd, isPositive, multipleOfFive];
 console.log(allClear(numFnArr, 25)) // should log true 
 console.log(allClear(numFnArr, -25)) // should log false
 
+// Challenge 3
+// Write a function numSelectString that accepts an array of numbers and returns a string. This function should use filter, sort, and reduce to return a string containing only the odd numbers from the array, separated by commas, in ascending order.
+
+// The Solution
+
+const numSelectString = (numArr) => {
+  return numArr
+    .sort((a, b) => a - b)
+    .filter((n) => n % 2)
+    .reduce((acc, cur) => acc + ", " + cur);
+};
+
+const nums = [17, 34, 3, 12];
+console.log(numSelectString(nums)); // should log "3, 17"
