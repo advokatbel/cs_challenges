@@ -708,3 +708,22 @@ const numSelectString = (numArr) => {
 
 const nums = [17, 34, 3, 12];
 console.log(numSelectString(nums)); // should log "3, 17"
+
+// Challenge 4
+// Write a function movieSelector that accepts an array of objects containing movie information (id, title, and score). Chain together invocations of map, filter AND reduce to return an array containing only movies with a score greater than 5. The titles should be all uppercase strings.
+
+// The Solution
+
+const movieSelector = (moviesArr) => {
+  return moviesArr
+    .filter((el) => el.score > 5)
+    .map((obj) => obj.title.toUpperCase());
+};
+
+const movies = [
+  { id: 1, title: "Pan's Labyrinth", score: 9 },
+  { id: 37, title: "Manos: The Hands of Fate", score: 2 },
+  { title: "Air Bud", score: 5 },
+  { title: "Hackers", score: 7 },
+];
+console.log(movieSelector(movies)); // should log [ "PAN'S LABYRINTH", "HACKERS" ]
