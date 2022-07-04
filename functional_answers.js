@@ -743,3 +743,11 @@ const curriedAddThreeNums = (num1) => {
 
 console.log(curriedAddThreeNums(3)(-1)(1)); // should log 3
 
+// Challenge 6
+// Use partial application with your previously-defined curriedAddThreeNums to create a new function curriedAddTwoNumsToFive that when run twice in succession, adds two numbers to five as follows:
+
+// The Solution
+
+const curriedAddTwoNumsToFive = curriedAddThreeNums(5);
+
+console.log(curriedAddTwoNumsToFive(6)(7)); //should return 18
