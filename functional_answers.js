@@ -727,3 +727,19 @@ const movies = [
   { title: "Hackers", score: 7 },
 ];
 console.log(movieSelector(movies)); // should log [ "PAN'S LABYRINTH", "HACKERS" ]
+
+// Challenge 5
+// Create a function curriedAddThreeNums that adds three numbers together when run thrice in succession as follows:
+
+// The Solution
+
+const curriedAddThreeNums = (num1) => {
+  return (num2) => {
+    return (num3) => {
+      return num1 + num2 + num3;
+    };
+  };
+};
+
+console.log(curriedAddThreeNums(3)(-1)(1)); // should log 3
+
